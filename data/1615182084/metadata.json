@@ -1,0 +1,12 @@
+{
+    "query": "https://trove.nla.gov.au/search/advanced/category/newspapers?keyword=bushfire&date.from=1800-01-01&date.to=1900-01-01&startPos=40&l-category=Article",
+    "key": "it6g700aromg9ve6",
+    "max": 0,
+    "pdf": false,
+    "text": true,
+    "image": false,
+    "include_linebreaks": false,
+    "harvest": "1615182084",
+    "date_started": "2021-03-08T16:41:24.041616",
+    "start": null
+}
