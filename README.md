@@ -1,4 +1,5 @@
 Readme.md   
+<<<<<<< HEAD
 All articles in 19th century regarding bushfires to run NER. 
 making changes INITIAL COMMOIT
 
@@ -9,3 +10,6 @@ java -mx600m -cp "*:lib/*" edu.stanford.nlp.ie.crf.CRFClassifier -loadClassifier
 
 -outputDirectory 
 cannot batch!
+=======
+interface that approximates the Fires Near Me App with locations from the 19th century. 
+>>>>>>> a33fd400189ff8554fc6496fe0db5859a9a1bedb
