@@ -1,3 +1,2 @@
 Readme.md   
-All articles in 19th century regarding bushfires to run NER. 
-making changes INITIAL COMMOIT
+interface that approximates the Fires Near Me App with locations from the 19th century. 
