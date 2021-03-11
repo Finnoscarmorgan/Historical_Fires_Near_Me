@@ -13,3 +13,9 @@ cannot batch!
 =======
 interface that approximates the Fires Near Me App with locations from the 19th century. 
 >>>>>>> a33fd400189ff8554fc6496fe0db5859a9a1bedb
+
+
+make sure this is on your class path
+
+echo $CLASSPATH
+:/Users/fiannualamorgan/Documents/stanford-ner-2020-11-17/stanford-ner.jar
