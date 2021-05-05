@@ -1,13 +1,8 @@
 import os
 import nltk
-# import pandas as pd #No idea why these don't import on my machine :(
-# import numpy as np #No idea why these don't import on my machine :(
 import csv
 import time
 
-#TRY DELETING THE BELOW TWO LINES FIRST!!!!!!
-# java_path = os.path.normpath("C:/Program Files/Java/jre1.8.0_291/bin/java.exe") #Change the local path for JAVA
-# os.environ['JAVAHOME'] = java_path #You might need to delete this - I just added this because JAVE RTE wasn't on my computer
 
 from nltk.tag import StanfordNERTagger
 from nltk.tokenize import word_tokenize
@@ -23,7 +18,7 @@ csvdirectory = (os.path.normpath("/Users/fiannualamorgan/Documents/GitHub/Histor
 def textcheck(filename):
     start = time.time()
     print("Working on | ",filename)
-    textlocation = (os.path.normpath(os.path.join(textdirectory,filename))) #sets the specific path for the 'filename' which is basically working through a list of everything that is in the folder
+    textlocation = (os.path.normpath(os.path.join(textdirectory,filename))) # sets the specific path for the 'filename' which is basically working through a list of everything that is in the folder
     text = open(textlocation, encoding='utf-8').read()
 
     textfilename = os.path.basename(textlocation)
