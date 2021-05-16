@@ -10,6 +10,13 @@ Contents contain:
 - all 5000 articles that mention bushfires derived from Trove across the 19th century. 
 - script to extract NER using Stanford. 
 - There is a "test folder" that needs to be removed, this was simply to make sure the script was working. 
+# 16/5/2021
+- ran 'Test_NER_Stanford.py' on 500 articles and produced output.
+
+
+record of Fellowship Meetings:
+- recommendations:
+- produce script that collates placenames back together
 
 
 # Running Stanford NER from the Command Line
