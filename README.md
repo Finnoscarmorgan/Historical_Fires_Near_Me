@@ -14,9 +14,10 @@ Contents contain:
 - ran 'Test_NER_Stanford.py' on 500 articles and produced output.
 
 
-record of Fellowship Meetings:
-- recommendations:
+# record of Fellowship Meetings:
 - produce script that collates placenames back together
+- produce spreadsheet of all publication places
+- produce spreadsheet of cleaned fictional places 
 
 
 # Running Stanford NER from the Command Line
