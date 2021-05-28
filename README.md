@@ -12,12 +12,20 @@ Contents contain:
 - There is a "test folder" that needs to be removed, this was simply to make sure the script was working. 
 # 16/5/2021
 - ran 'Test_NER_Stanford.py' on 500 articles and produced output.
+# 28/5/21
+- try and make extractions code. 
+
 
 
 # record of Fellowship Meetings:
 - produce script that collates placenames back together
 - produce spreadsheet of all publication places
 - produce spreadsheet of cleaned fictional places 
+
+
+
+
+
 
 
 # Running Stanford NER from the Command Line
