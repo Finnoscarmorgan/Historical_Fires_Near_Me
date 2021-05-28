@@ -1,8 +1,10 @@
+#This code will take in a number of txt files and extract LOCATIONS, and print the filename in column 0 of csv
+#and print LOCATION in column 2
+
 import os
 import nltk
 import csv
 import time
-
 
 from nltk.tag import StanfordNERTagger
 from nltk.tokenize import word_tokenize
