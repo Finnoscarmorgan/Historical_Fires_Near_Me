@@ -6,7 +6,8 @@
 f = open('/Users/fiannualamorgan/Documents/GitHub/Historical_Fires_Near_Me/code/sample_bushfire_text.txt')
 text = f.read()
 
-for i in range:
+index = 0
+while index < len(text):
 #locate index of 'bush-fire' in text
     bushfire_index = text.find("bush-fire")
 # turn index location into a string to establish extraction range
@@ -18,7 +19,7 @@ for i in range:
 #use bushfire_index and range_2 location to extract 609 (should match up) characters 
     extract_1 = text[range_1:bushfire_index]
     extract = str(extract_1 + extract_2)
-return(extract)
+
 
 
 
