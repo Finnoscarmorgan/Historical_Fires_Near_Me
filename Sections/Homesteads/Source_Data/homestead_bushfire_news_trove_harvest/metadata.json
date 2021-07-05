@@ -1,0 +1,12 @@
+{
+    "query": "https://trove.nla.gov.au/search/advanced/category/newspapers?keyword=%22bushfire%22%20and%20%22homestead%22&date.from=1850-01-01&date.to=1915-01-01&l-category=Article",
+    "key": "it6g700aromg9ve6",
+    "max": 0,
+    "pdf": false,
+    "text": true,
+    "image": false,
+    "include_linebreaks": false,
+    "harvest": "1615098344",
+    "date_started": "2021-03-07T17:25:44.184588",
+    "start": null
+}

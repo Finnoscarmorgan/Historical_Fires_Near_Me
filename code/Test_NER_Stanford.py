@@ -14,8 +14,8 @@ st = StanfordNERTagger(os.path.normpath(
     os.path.normpath(
         '/Users/fiannualamorgan/Documents/stanford-ner-2020-11-17/stanford-ner.jar')) #As before make sure these link to your local versions of the libaries
 
-textdirectory = (os.path.normpath("/Users/fiannualamorgan/Documents/GitHub/Historical_Fires_Near_Me/data/1615182084/text/")) #You need to keep your TEXTS in wherever this folder is - you can set it on your computer
-csvdirectory = (os.path.normpath("/Users/fiannualamorgan/Documents/GitHub/Historical_Fires_Near_Me/data/1615182084/text/CSVOutput")) #Okay, so you need to make this folder in your PROJECT directory before you start!
+textdirectory = (os.path.normpath("/Users/fiannualamorgan/Documents/GitHub/Historical_Fires_Near_Me/output/Bushfire_News_Articles/Bushfire_Extracts/")) #You need to keep your TEXTS in wherever this folder is - you can set it on your computer
+csvdirectory = (os.path.normpath("/Users/fiannualamorgan/Documents/GitHub/Historical_Fires_Near_Me/output/Bushfire_News_Articles/Bushfire_Extracts/Extraction_NER_Output/")) #Okay, so you need to make this folder in your PROJECT directory before you start!
 
 def textcheck(filename):
     start = time.time()
