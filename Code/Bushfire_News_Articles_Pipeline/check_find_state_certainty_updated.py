@@ -57,7 +57,7 @@ def get_features_from_query_results(query_results):
     else:
         return None
 
-def query_name_with_fallback(placename: str, search_type_order=['exact','contains','fuzzy']):
+def query_name_with_fallback(placename: str, search_type_order=['exact','fuzzy']): #remove contains from search sequence
     """
     Query API for placename, using search_types in order, and returning first non-null results.
     Note: should mostly return exact, and should almost never need to return fuzzy.
@@ -155,7 +155,7 @@ def find_state_certainty(best_results: dict,threshold: float):
 Establish input and output file
 """
 #inputfile = R'C:\Users\tecto\Desktop\Finn doc code\csv test\Book1_Failed_Test.csv'
-inputfile = '/Users/fiannualamorgan/Documents/GitHub/Historical_Fires_Near_Me/Sections/Bushfire_News_Articles_19th_Century/Analysis/Aust_Placenames_in_England.csv'
+inputfile = '/Users/fiannualamorgan/Documents/GitHub/Historical_Fires_Near_Me/Sections/Bushfire_News_Articles_19th_Century/Transformed_Data/Geocoded_LOCATION_Mappify_API/Transformed/Transformed_2543_failed.csv'
 outfile = outFile = inputfile.split("/")[-1].split(".")[0] + "_output.csv"
 
 data_to_add = pd.read_csv(inputfile)
