@@ -57,7 +57,7 @@ def get_features_from_query_results(query_results):
     else:
         return None
 
-def query_name_with_fallback(placename: str, search_type_order=['exact','fuzzy']): #remove contains from search sequence
+def query_name_with_fallback(placename: str, search_type_order=['exact','fuzzy']): #remove 'contains' from search sequence
     """
     Query API for placename, using search_types in order, and returning first non-null results.
     Note: should mostly return exact, and should almost never need to return fuzzy.
@@ -73,19 +73,22 @@ def query_name_with_fallback(placename: str, search_type_order=['exact','fuzzy']
         if results:
             features = get_features_from_query_results(results)
             log(f"Query returned {len(features)} features")
+            
+            results['searchType']=search_type 
+
             #implement check for fuzzy search, return first result and evaluate Levenstein distance, 
             #return result if match ratio is greater than 75%?
             if search_type=='fuzzy':
                 goodMatch=[]
                 for f in features:
                     ratio = fuzz.ratio(placename.lower(), f['properties']['name'].lower())
-                    if ratio>75:
+                    if ratio>=90: #have changed to 90
                         goodMatch.append(f)
 
                 if len(goodMatch)==0:
                     results=None
                 else:
-                    results['features']=goodMatch        
+                    results['features']=goodMatch       
             break
         else:
             continue
@@ -98,6 +101,8 @@ def find_state_certainty(best_results: dict,threshold: float):
     state_count=[]
     for f in best_results['features']:
         state_count += [f['properties']['state']]
+    
+    best_results['n_results'] = len(state_count)
 
     state_count_uniques = list(set(state_count))
     n_unique = len(state_count_uniques)
@@ -112,15 +117,18 @@ def find_state_certainty(best_results: dict,threshold: float):
         if percent_total_mentions >= 1 / n_unique * 100 and winner == None:
             candidates=[this_state]
             winner=this_state
+            winnerPct=percent_total_mentions
         elif percent_total_mentions >= 1 / n_unique * 100:
             candidates.append(this_state)
             winner='Ambiguous'
+            winnerPct=float('NaN')
 
     if winner==None:
         winner='No best estimate'
 
     best_results['states']=states
     best_results['most_likely_state']=winner
+    best_results['winnerPct']=winnerPct
 
     """
     Find the median coordinates of the place name. If there is a clear winner amongst the states, only select entries 
@@ -144,10 +152,12 @@ def find_state_certainty(best_results: dict,threshold: float):
         for i in range(len(medLatDist)):
             medDists.append(math.sqrt(medLatDist[i]**2+medLongDist[i]**2))
         
-        best_results['median_dist']=statistics.mean(medDists)
+        best_results['mean_median_dist']=statistics.mean(medDists)
+        best_results['median_median_dist']=statistics.median(medDists)
     else:
         best_results['best_coords']=[float('NaN'),float('NaN')]
-        best_results['median_dist']=float('NaN')
+        best_results['mean_median_dist']=float('NaN')
+        best_results['median_median_dist']=float('NaN')
 
     return best_results
 
@@ -155,15 +165,19 @@ def find_state_certainty(best_results: dict,threshold: float):
 Establish input and output file
 """
 #inputfile = R'C:\Users\tecto\Desktop\Finn doc code\csv test\Book1_Failed_Test.csv'
-inputfile = '/Users/fiannualamorgan/Documents/GitHub/Historical_Fires_Near_Me/Sections/Bushfire_News_Articles_19th_Century/Transformed_Data/Geocoded_LOCATION_Mappify_API/Transformed/Transformed_2543_failed.csv'
-outfile = outFile = inputfile.split("/")[-1].split(".")[0] + "_output.csv"
+inputfile = '/Users/fiannualamorgan/Documents/GitHub/Historical_Fires_Near_Me/Sections/Bushfire_Literature/Transformed_Data/Bushfire_Literature_Input_Disambiguator.csv'
+outfile = outFile = inputfile.split("/")[-1].split(".")[0] + "output.csv"
 
 data_to_add = pd.read_csv(inputfile)
 
 lats=[]
 longs=[]
 finalStates=[]
-median_distances=[]
+mean_median_distances=[]
+median_median_distances=[]
+n_results=[]
+winnerPct=[]
+searchType=[]
 start = time.time()
 
 for i in data_to_add.index:
@@ -181,17 +195,29 @@ for i in data_to_add.index:
         lats.append(best_results['best_coords'][0])
         longs.append(best_results['best_coords'][1])
         finalStates.append(best_results['most_likely_state'])
-        median_distances.append(best_results['median_dist'])
+        mean_median_distances.append(best_results['mean_median_dist'])
+        median_median_distances.append(best_results['median_median_dist'])
+        n_results.append(best_results['n_results'])
+        winnerPct.append(best_results['winnerPct'])
+        searchType.append(best_results['searchType'])
     else:
         lats.append(float('NaN'))
         longs.append(float('NaN'))
         finalStates.append('None')
-        median_distances.append(float('NaN'))
+        mean_median_distances.append(float('NaN'))
+        median_median_distances.append(float('NaN'))
+        n_results.append(0)
+        winnerPct.append(float('NaN'))
+        searchType.append('None')
 
 data_to_add['Latitude']=lats
 data_to_add['Longitude']=longs
 data_to_add['State']=finalStates
-data_to_add['median_dist']=median_distances
+data_to_add['mean_median_dist']=mean_median_distances
+data_to_add['median_median_dist']=median_median_distances
+data_to_add['n_results']=n_results
+data_to_add['winnerPct']=winnerPct
+data_to_add['searchType']=searchType
 
 """
 Write to csv
