@@ -63,6 +63,8 @@ def query_name_with_fallback(placename: str, search_type_order=['exact','fuzzy']
     Note: should mostly return exact, and should almost never need to return fuzzy.
     """
     #eliminate placenames with four or less characters
+    if type(placename)==float:
+        return None
     if len(placename) <= 4:
         search_type_order= ['exact']
    
