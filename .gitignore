@@ -131,3 +131,5 @@ Analysis_Visualisations
 third_test_inputoutput.csv
 Code/Drafts/
 Code/Notebooks/ 
+Code/.ipynb_checkpoints
+Code/.DS_Store
