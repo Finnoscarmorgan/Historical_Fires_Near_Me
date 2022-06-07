@@ -59,13 +59,12 @@ def get_features_from_query_results(query_results):
     docstring
     """
     if query_results:
-        return query_results.get('features', [])
+        return query_results.get('features',[])
     else:
         return None
 
 
-def query_name_with_fallback(placename: str,
-                             search_type_order=['exact', 'fuzzy']):  # remove 'contains' from search sequence
+def query_name_with_fallback(placename: str,search_type_order=['exact', 'fuzzy']):  # remove 'contains' from search sequence
     """
     Query API for placename, using search_types in order, and returning first non-null results.
     Note: should mostly return exact, and should almost never need to return fuzzy.
@@ -91,9 +90,8 @@ def query_name_with_fallback(placename: str,
             if search_type == 'fuzzy':
                 goodMatch = []
                 for f in features:
-                    ratio = fuzz.ratio(placename.lower(),
-                                       f['properties']['name'].lower())
-                    if ratio >= 90:  # have changed to 90
+                    ratio = fuzz.ratio(placename.lower(),f['properties']['name'].lower())
+                    if ratio>=90:  # have changed to 90
                         goodMatch.append(f)
 
                 if len(goodMatch) == 0:
