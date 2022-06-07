@@ -9,6 +9,7 @@ import time
 import math
 from fuzzywuzzy import fuzz
 
+
 def log(to_log: str):
     """"Quick and dirty log."""
     now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -24,35 +25,30 @@ def build_url(placename: str, search_type: str, search_public_data: bool = True)
     safe_placename = urllib.parse.quote(placename.strip().lower())
 
     if search_type == 'fuzzy':
-            url = f"https://tlcmap.org/ghap/search?fuzzyname={safe_placename}&searchausgaz=on&format=json"
-        elif search_type == 'exact':
+        url = f"https://tlcmap.org/ghap/search?fuzzyname={safe_placename}&searchausgaz=on&format=json"
+    elif search_type == 'exact':
             url = f"https://tlcmap.org/ghap/search?name={safe_placename}&searchausgaz=on&format=json"
-        elif search_type == 'contains':
+    elif search_type == 'contains':
             url = f"https://tlcmap.org/ghap/search?containsname={safe_placename}&searchausgaz=on&format=json"
-        else:
+    else:
             return None
-        return url
+    return url
 
 
 def query_name(placename: str, search_type: str):
     """
     Use tlcmap/ghap API to check a placename, implemented fuzzy search but will not handle non returns.
     """
-    url = build_url(placename, search_type, search_public_data = False)
+    url = build_url(placename, search_type = search_type)
     if url:
         r = requests.get(url)
         if r.url == 'https://tlcmap.org/ghap/maxpaging':
             return None
         log(f"Query returned {r.status_code}")
         if r.ok:
-            """
-            NOTE: we could catch json.decoder.JSONDecodeError, but since json=<3.4 doesn't raise this,
-                  a generic ValueError is more portable
-            See: https://stackoverflow.com/questions/44714046/python3-unable-to-import-jsondecodeerror-from-json-decoder
-            """
             try:
                 data = json.loads(r.content)
-            except ValueError: #Error handling for 0 matches 
+            except ValueError:  # Error handling for 0 matches
                 return None
             return data
     return None
@@ -95,7 +91,8 @@ def query_name_with_fallback(placename: str,
             if search_type == 'fuzzy':
                 goodMatch = []
                 for f in features:
-                    ratio = fuzz.ratio(placename.lower(), f['properties']['name'].lower())
+                    ratio = fuzz.ratio(placename.lower(),
+                                       f['properties']['name'].lower())
                     if ratio >= 90:  # have changed to 90
                         goodMatch.append(f)
 
@@ -114,7 +111,7 @@ def find_state_certainty(best_results: dict, threshold: float):
     Determine the percentage of placenames present in each state
     """
     state_count = []
-    
+
     for f in best_results['features']:
         if 'state' in f['properties']:
             state_count += [f['properties']['state']]
@@ -132,7 +129,8 @@ def find_state_certainty(best_results: dict, threshold: float):
     for this_state in state_count_uniques:
         mentions = [i for i, x in enumerate(state_count) if x == this_state]
         percent_total_mentions = len(mentions) / len(state_count) * 100
-        states[this_state] = {'raw': len(mentions), 'percentage': percent_total_mentions}
+        states[this_state] = {'raw': len(
+            mentions), 'percentage': percent_total_mentions}
 
         if percent_total_mentions >= 1 / n_unique * 100 and winner == None:
             candidates = [this_state]
@@ -166,12 +164,14 @@ def find_state_certainty(best_results: dict, threshold: float):
                 tmpLong.append(f['geometry']['coordinates'][1])
 
     if len(tmpLat) > 0:
-        best_results['best_coords'] = [statistics.median(tmpLat), statistics.median(tmpLong)]
+        best_results['best_coords'] = [
+            statistics.median(tmpLat), statistics.median(tmpLong)]
         medLatDist = [x - best_results['best_coords'][0] for x in tmpLat]
         medLongDist = [x - best_results['best_coords'][1] for x in tmpLong]
         medDists = []
         for i in range(len(medLatDist)):
-            medDists.append(math.sqrt(medLatDist[i] ** 2 + medLongDist[i] ** 2))
+            medDists.append(
+                math.sqrt(medLatDist[i] ** 2 + medLongDist[i] ** 2))
 
         best_results['mean_median_dist'] = statistics.mean(medDists)
         best_results['median_median_dist'] = statistics.median(medDists)
@@ -181,6 +181,7 @@ def find_state_certainty(best_results: dict, threshold: float):
         best_results['median_median_dist'] = float('NaN')
 
     return best_results
+
 
 # Establish input and output file
 inputfile = '/Users/fiannualamorgan/Documents/GitHub/third_test_input.csv'
@@ -211,7 +212,8 @@ for i in data_to_add.index:
     to be the winner. Scaling this number to 1.5 would mean those numbers are scaled to 75% and 37.5%, respectively.
     """
     if best_results != None:
-        best_results = find_state_certainty(best_results, 1)  # threshold(was 1.5)
+        best_results = find_state_certainty(
+            best_results, 1)  # threshold(was 1.5)
 
         lats.append(best_results['best_coords'][0])
         longs.append(best_results['best_coords'][1])
