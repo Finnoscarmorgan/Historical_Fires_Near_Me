@@ -127,8 +127,7 @@ def find_state_certainty(best_results: dict, threshold: float):
     for this_state in state_count_uniques:
         mentions = [i for i, x in enumerate(state_count) if x == this_state]
         percent_total_mentions = len(mentions) / len(state_count) * 100
-        states[this_state] = {'raw': len(
-            mentions), 'percentage': percent_total_mentions}
+        states[this_state] = {'raw': len(mentions), 'percentage': percent_total_mentions}
 
         if percent_total_mentions >= 1 / n_unique * 100 and winner == None:
             candidates = [this_state]
@@ -162,14 +161,12 @@ def find_state_certainty(best_results: dict, threshold: float):
                 tmpLong.append(f['geometry']['coordinates'][1])
 
     if len(tmpLat) > 0:
-        best_results['best_coords'] = [
-            statistics.median(tmpLat), statistics.median(tmpLong)]
+        best_results['best_coords'] = [statistics.median(tmpLat), statistics.median(tmpLong)]
         medLatDist = [x - best_results['best_coords'][0] for x in tmpLat]
         medLongDist = [x - best_results['best_coords'][1] for x in tmpLong]
         medDists = []
         for i in range(len(medLatDist)):
-            medDists.append(
-                math.sqrt(medLatDist[i] ** 2 + medLongDist[i] ** 2))
+            medDists.append(math.sqrt(medLatDist[i] ** 2 + medLongDist[i] ** 2))
 
         best_results['mean_median_dist'] = statistics.mean(medDists)
         best_results['median_median_dist'] = statistics.median(medDists)
@@ -210,8 +207,7 @@ for i in data_to_add.index:
     to be the winner. Scaling this number to 1.5 would mean those numbers are scaled to 75% and 37.5%, respectively.
     """
     if best_results != None:
-        best_results = find_state_certainty(
-            best_results, 1)  # threshold(was 1.5)
+        best_results = find_state_certainty(best_results, 1)  # threshold(was 1.5)
 
         lats.append(best_results['best_coords'][0])
         longs.append(best_results['best_coords'][1])
