@@ -24,11 +24,11 @@ def build_url(placename: str, search_type: str) -> str:
     """
     safe_placename = urllib.parse.quote(placename.strip().lower())
     if search_type == 'fuzzy':
-        url = f"https://tlcmap.org/ghap/search?fuzzyname={safe_placename}&searchausgaz=on&searchpublicdatasets=on&format=json"
+        url = f"https://tlcmap.org/ghap/search?fuzzyname={safe_placename}&searchausgaz=on&format=json"
     elif search_type == 'exact':
-        url = f"https://tlcmap.org/ghap/search?name={safe_placename}&searchausgaz=on&searchpublicdatasets=on&format=json"
+        url = f"https://tlcmap.org/ghap/search?name={safe_placename}&searchausgaz=on&format=json"
     elif search_type == 'contains':
-        url = f"https://tlcmap.org/ghap/search?containsname={safe_placename}&searchausgaz=on&searchpublicdatasets=on&format=json"
+        url = f"https://tlcmap.org/ghap/search?containsname={safe_placename}&searchausgaz=on&format=json"
     else:
         return None
     return url
@@ -84,7 +84,7 @@ def query_name_with_fallback(placename: str, search_type_order=['exact','fuzzy']
                 goodMatch=[]
                 for f in features:
                     ratio = fuzz.ratio(placename.lower(), f['properties']['name'].lower())
-                    if ratio>=90: #have changed to 90
+                    if ratio>=75: #have changed to 90
                         goodMatch.append(f)
 
                 if len(goodMatch)==0:
@@ -167,7 +167,8 @@ def find_state_certainty(best_results: dict,threshold: float):
 Establish input and output file
 """
 #inputfile = R'C:\Users\tecto\Desktop\Finn doc code\csv test\Book1_Failed_Test.csv'
-inputfile = '/Users/fiannualamorgan/Documents/GitHub/Historical_Fires_Near_Me/Sections/Bushfire_Literature/Transformed_Data/Bushfire_Literature_Input_Disambiguator.csv'
+# inputfile = '/Users/fiannualamorgan/Documents/GitHub/Historical_Fires_Near_Me/Sections/Bushfire_Literature/Transformed_Data/Bushfire_Literature_Input_Disambiguator.csv'
+inputfile = '/Users/fiannualamorgan/Documents/GitHub/Historical_Fires_Near_Me/Sections/1851_Fires/1851_Newspaper_Placenames_Disambiguator_Input.csv'
 outfile = outFile = inputfile.split("/")[-1].split(".")[0] + "output.csv"
 
 data_to_add = pd.read_csv(inputfile)
