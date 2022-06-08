@@ -21,4 +21,5 @@ http://nlp.stanford.edu/~manning/papers/gibbscrf3.pdf
 
 This program was developed as a Doctoral Student at The Australian National University. Provisions relating to ownership of student intellectual property are contained in the Intellectual Property Policy. The default position is that a student (Fiannuala Morgan) owns their intellectual property.
 
-
+Under the MIT license newspaper articles were collected through use of The Trove Harvester.
+Sherratt, T. (Author). (2019). GLAM-Workbench/trove-newspaper-harvester. Software, Zenodo - CERN (European Organisation for Nuclear Research). https://doi.org/10.5281/zenodo.3545045
