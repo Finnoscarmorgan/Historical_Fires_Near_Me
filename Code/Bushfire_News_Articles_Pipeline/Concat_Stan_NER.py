@@ -1,5 +1,8 @@
 #This code will take in a number of txt files and extract LOCATIONS, and print the filename in column 0 of csv
 #and print LOCATION in column 2
+"""
+Jenny Rose Finkel, Trond Grenager, and Christopher Manning. 2005. Incorporating Non-local Information into Information Extraction Systems by Gibbs Sampling. Proceedings of the 43nd Annual Meeting of the Association for Computational Linguistics (ACL 2005), pp. 363-370. http://nlp.stanford.edu/~manning/papers/gibbscrf3.pdf
+"""
 
 import os
 from pickle import NONE
