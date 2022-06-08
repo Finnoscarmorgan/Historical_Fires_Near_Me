@@ -147,9 +147,10 @@ def find_state_certainty(best_results: dict,threshold: float):
     tmpLong=[]
     
     for f in best_results['features']:
-        if f['properties']['state'] in candidates and type(f['geometry']['coordinates'][0]) is float:
-            tmpLat.append(f['geometry']['coordinates'][0])
-            tmpLong.append(f['geometry']['coordinates'][1])
+        if 'state' in f['properties']:
+            if f['properties']['state'] in candidates and type(f['geometry']['coordinates'][0]) is float:
+                tmpLat.append(f['geometry']['coordinates'][0])
+                tmpLong.append(f['geometry']['coordinates'][1])
     
     if len(tmpLat) > 0:
         best_results['best_coords']=[statistics.median(tmpLat),statistics.median(tmpLong)]
@@ -171,9 +172,8 @@ def find_state_certainty(best_results: dict,threshold: float):
 """
 Establish input and output file
 """
-#inputfile = R'C:\Users\tecto\Desktop\Finn doc code\csv test\Book1_Failed_Test.csv'
-# inputfile = '/Users/fiannualamorgan/Documents/GitHub/Historical_Fires_Near_Me/Sections/Bushfire_Literature/Transformed_Data/Bushfire_Literature_Input_Disambiguator.csv'
-inputfile = '/Users/fiannualamorgan/Documents/GitHub/Historical_Fires_Near_Me/Sections/1851_Fires/1851_Newspaper_Placenames_Disambiguator_Input.csv'
+
+inputfile = './input/input.csv'
 outfile = outFile = inputfile.split("/")[-1].split(".")[0] + "output.csv"
 
 data_to_add = pd.read_csv(inputfile)
