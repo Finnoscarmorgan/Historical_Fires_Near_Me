@@ -83,12 +83,12 @@ def query_name_with_fallback(placename: str, search_type_order=['exact','fuzzy']
             results['searchType']=search_type 
 
             #implement check for fuzzy search, return first result and evaluate Levenstein distance, 
-            #return result if match ratio is greater than 75%?
+            #return result if match ratio is greater than determined threshold.
             if search_type=='fuzzy':
                 goodMatch=[]
                 for f in features:
                     ratio = fuzz.ratio(placename.lower(), f['properties']['name'].lower())
-                    if ratio>=75: #have changed to 90
+                    if ratio>=90: #lower this number for more generous matching
                         goodMatch.append(f)
 
                 if len(goodMatch)==0:
@@ -106,7 +106,8 @@ def find_state_certainty(best_results: dict,threshold: float):
     """
     state_count=[]
     for f in best_results['features']:
-        state_count += [f['properties']['state']]
+        if 'state' in f['properties']:
+            state_count += [f['properties']['state']]
     
     best_results['n_results'] = len(state_count)
 
