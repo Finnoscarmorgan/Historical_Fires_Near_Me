@@ -1,3 +1,4 @@
+from types import NoneType
 import urllib.parse
 import requests
 import json
@@ -44,7 +45,10 @@ def query_name(placename: str, search_type: str):
             return None
         log(f"Query returned {r.status_code}")
         if r.ok:
-            data = json.loads(r.content)
+            try:
+                data = json.loads(r.content)
+            except ValueError: #Error handling if no matches found
+                return None 
             return data
     return None
 
