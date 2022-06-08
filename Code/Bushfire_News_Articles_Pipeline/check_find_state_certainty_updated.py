@@ -1,4 +1,3 @@
-from types import NoneType
 import urllib.parse
 import requests
 import json
