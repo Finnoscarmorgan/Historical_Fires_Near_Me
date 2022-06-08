@@ -1,10 +1,5 @@
 =========================================================================
-==  NOTICE file for use with the Apache License, Version 2.0,  ==
-Apache [PRODUCT_NAME]
-Copyright [XXXX-XXXX] The Apache Software Foundation
 
-This product includes software developed at
-The Apache Software Foundation (http://www.apache.org/).
 =========================================================================
 
 Under a GNU GENERAL PUBLIC LICENSE this software contains code from Stanford Core NLP.
