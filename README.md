@@ -1,5 +1,6 @@
 # Historical Fires Near Me 
 ## This repository contains code used to create the 'Historical Fires Near Me' Map.
+## [Link to Map](https://finnoscarmorgan.carto.com/builder/48b30c5c-53c8-4216-ae45-1e5c002e7293/embed)
 
 In November 2019 the official app of the NSW Rural Fire Service, “Fires Near Me,” became the fastest downloaded App on both Android and Apple platforms.  The app, designed to alert users to both proximity and severity of bush-fires, became the official prism through which the unfolding disaster was interpreted.  The map possessed an intensity that belied its simplistic rendering as users watched fires tick over from “watch and act” to “emergency” status in real time. Although temporally located, the severity of certain fires meant they became a static part of the interface. An uncanny habituation occurred for the user as event was rendered geography and fire became a recognisable and  immutable aspect of the landscape. 
 
@@ -7,5 +8,5 @@ At the same time as disaster unfolded, discussion and advocacy for immediate cli
 
 By attending to the paratextual elements that accompany these stories, this map explores the relationship between fictional representations of bushfires and their real-world referent. Ultimately, this map demonstrates that the cultural status of disaster is contingent on the political moment, recording how disaster is memorialised, mythologised and finally forgotten. “Historical Fires Near Me” not only demonstrates the culturally significant role that bushfires play in settler Australian national identity, but also acts as a comprehensive historical record that attests to the unprecedented crisis of the Summer of 2019/2020.
 
-![Map](Screen Shot 2022-08-02 at 9.15.37 am.png)
+![Map](Map.png)
 
