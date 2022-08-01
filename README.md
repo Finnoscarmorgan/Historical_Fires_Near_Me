@@ -7,4 +7,5 @@ At the same time as disaster unfolded, discussion and advocacy for immediate cli
 
 By attending to the paratextual elements that accompany these stories, this map explores the relationship between fictional representations of bushfires and their real-world referent. Ultimately, this map demonstrates that the cultural status of disaster is contingent on the political moment, recording how disaster is memorialised, mythologised and finally forgotten. “Historical Fires Near Me” not only demonstrates the culturally significant role that bushfires play in settler Australian national identity, but also acts as a comprehensive historical record that attests to the unprecedented crisis of the Summer of 2019/2020.
 
+![Map](Screen Shot 2022-08-02 at 9.15.37 am.png)
 
