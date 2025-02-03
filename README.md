@@ -10,6 +10,6 @@ By attending to the paratextual elements that accompany these stories, this map 
 
 ![Map](Map.png)
 
-## [Link to Map Data]([https://www.tlcmap.org/view/timeline.html?load=https://www.tlcmap.org/ghap/publicdatasets/170/json?sort=start](https://tlcmap.org/layers/170))
+## [Link to Map Data](https://www.tlcmap.org/view/timeline.html?load=https://www.tlcmap.org/ghap/publicdatasets/170/json?sort=start](https://tlcmap.org/layers/170))
 
 ## This repository contains code used to create the 'Historical Fires Near Me' Map.
