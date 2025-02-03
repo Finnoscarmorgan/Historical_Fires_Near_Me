@@ -14,12 +14,12 @@ from nltk.tag import StanfordNERTagger
 from nltk.tokenize import word_tokenize
 
 st = StanfordNERTagger(os.path.normpath(
-    '/Users/fiannualamorgan/Documents/stanford-ner-2020-11-17/classifiers/english.all.3class.distsim.crf.ser.gz'),
+    'ADD_PATH_TO/stanford-ner-2020-11-17/classifiers/english.all.3class.distsim.crf.ser.gz'),
     os.path.normpath(
-        '/Users/fiannualamorgan/Documents/stanford-ner-2020-11-17/stanford-ner.jar')) #As before make sure these link to your local versions of the libaries
+        'ADD_PATH_TO/stanford-ner-2020-11-17/stanford-ner.jar')) #As before make sure these link to your local versions of the libaries
 
-textdirectory = (os.path.normpath("/Users/fiannualamorgan/Documents/GitHub/Text_to_Test_for_Hugh/The_Golden_South_NER_Test/")) #You need to keep your TEXTS in wherever this folder is - you can set it on your computer
-csvdirectory = (os.path.normpath("/Users/fiannualamorgan/Documents/GitHub/Text_to_Test_for_Hugh/The_Golden_South_NER_Test/Output/")) #Okay, so you need to make this folder in your PROJECT directory before you start!
+textdirectory = (os.path.normpath("PATH_NAME")) #You need to keep your TEXTS in wherever this folder is - you can set it on your computer
+csvdirectory = (os.path.normpath("PATH_NAME")) #Okay, so you need to make this folder in your PROJECT directory before you start!
 
 def textcheck(filename):
     start = time.time()
