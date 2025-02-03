@@ -2,9 +2,8 @@
 import os
 import pandas as pd
 
-path = '/Users/fiannualamorgan/Documents/GitHub/Historical_Fires_Near_Me/output/Bushfire_News_Articles/Fuzzy_Output/Test_Extraction_NER_Output/'
-# path = '/Users/fiannualamorgan/Documents/GitHub/Historical_Fires_Near_Me/output/Bushfire_News_Articles/Bushfire_Extracts/Extraction_NER_Output/Test_NER_Output/'
-out_folder = '/Users/fiannualamorgan/Documents/GitHub/Historical_Fires_Near_Me/output/Bushfire_News_Articles/Fuzzy_Output/Test_Extraction_NER_Output/Output/'
+path = 'PATH_NAME'
+out_folder = 'PATH_NAME'
 
 master_df = pd.DataFrame()
 
