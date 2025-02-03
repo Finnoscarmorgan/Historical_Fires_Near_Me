@@ -4,8 +4,8 @@ import fuzzysearch as fs
 import attr
 
 
-folder = '/Users/fiannualamorgan/Documents/GitHub/Historical_Fires_Near_Me/Sections/Bushfire_News_Articles_19th_Century/Source_Data/text_Bushfire_News_Articles/'
-outfolder = '/Users/fiannualamorgan/Documents/GitHub/Historical_Fires_Near_Me/Sections/Bushfire_News_Articles_19th_Century/Generated_Data/Fuzzy_Output_200_Characters/' #cannot be in same directory as folder, must be adjacent 
+folder = 'FILE_NAME'
+outfolder = 'FILE_NAME' #cannot be in same directory as folder, must be adjacent 
 
 file_counter = 0 
 
