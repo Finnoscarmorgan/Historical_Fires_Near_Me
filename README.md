@@ -10,4 +10,4 @@ By attending to the paratextual elements that accompany these stories, this map 
 
 ![Map](Map.png)
 
-## [Link to Map Layer](https://www.tlcmap.org/view/timeline.html?load=https://www.tlcmap.org/ghap/publicdatasets/170/json?sort=start)
+## [Link to Map Data]([https://www.tlcmap.org/view/timeline.html?load=https://www.tlcmap.org/ghap/publicdatasets/170/json?sort=start](https://tlcmap.org/layers/170))
