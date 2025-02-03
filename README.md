@@ -13,3 +13,4 @@ By attending to the paratextual elements that accompany these stories, this map 
 ## [Link to Map Data](https://www.tlcmap.org/view/timeline.html?load=https://www.tlcmap.org/ghap/publicdatasets/170/json?sort=start](https://tlcmap.org/layers/170))
 
 ## This repository contains code used to create the 'Historical Fires Near Me' Map.
+The pipeline used to create the bushfire dataset downloaded text filed from the Trove API from which the keyword "bushfire" was extracted. NER was run on these extracts to identify geographic locations. Following this the disambiguation program was used to generate geographic co-ordinates and organise the date into a csv file. 
