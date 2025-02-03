@@ -3,8 +3,6 @@ import os
 import fuzzysearch as fs
 import attr
 
-# test article that contains mention of one bush-fire '/Users/fiannualamorgan/Documents/GitHub/Historical_Fires_Near_Me/output/Bushfire_News_Articles/text_Bushfire_News_Articles/18331221-6-641728.txt'
-# test article that contains mention of two bush-fires ('/Users/fiannualamorgan/Documents/GitHub/Historical_Fires_Near_Me/code/sample_bushfire_text.txt')
 
 folder = '/Users/fiannualamorgan/Documents/GitHub/Historical_Fires_Near_Me/Sections/Bushfire_News_Articles_19th_Century/Source_Data/text_Bushfire_News_Articles/'
 outfolder = '/Users/fiannualamorgan/Documents/GitHub/Historical_Fires_Near_Me/Sections/Bushfire_News_Articles_19th_Century/Generated_Data/Fuzzy_Output_200_Characters/' #cannot be in same directory as folder, must be adjacent 
@@ -13,7 +11,7 @@ file_counter = 0
 
 for path in os.listdir(folder):
     f = open (folder + path,'r', encoding='utf-8')
-    #f = open ('/Users/fiannualamorgan/Documents/GitHub/Historical_Fires_Near_Me/output/Bushfire_News_Articles/text_Bushfire_News_Articles/18351121-6-640652.txt','r', encoding='utf-8')
+    #f = open ('ADD_PATH_TO_TEXT_FILES_HERE.txt','r', encoding='utf-8')
     print(path)
     if path == '.DS_Store':
         continue
@@ -43,38 +41,4 @@ for path in os.listdir(folder):
     of.close()
     
 print(file_counter)
-    
-#bushfire
-#bushfires
-#bush-fire
-#bush-fires
-#bush fire
-#bush fires
 
-
-#locate index of 'bush-fire' in text
-#bushfire_index = text.find("bush-fire")
-# turn index location into a string to establish extraction range
-#range_2 = (int(bushfire_index) + 608)
-#use bushfire_index and range_2 location to extract 600 characters and establish second half of extraction.
-#extract_2 = text[bushfire_index:range_2]
-#find range_1 - the first half of the extraction
-#range_1 = (int(bushfire_index) - 608)
-#use bushfire_index and range_2 location to extract 609 (should match up) characters 
-#extract_1 = text[range_1:bushfire_index]
-#extract = str(extract_1 + extract_2)
-
-# write to new text file with appended .extract
-# if more than one mention append .extract2 (increasing if more)
-
-
-
-
-
-
-
-"""
-constraints: 
-- each mention of bushfire needs to be turned into its own file. Two mentions in one article means two files with similar filenames? (1 and 2)
-- append onto file increasing integer?
-"""
